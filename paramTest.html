@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // let paramTest = (a, b, ...arguments) => {
+        // alert(a);
+        // alert(b);
+        // alert(arguments)
+        // }
+
+        // paramTest(1, 2, 4, 5, 7);
+
+        // let a;
+
+        // a = 1,2,3; //Unexpected number
+
+        // alert(a); // 1
+
+        // a = ...arr; // error: Unexpexted token
+        // alert(a);
+        
+
+        // let show = (...args) => {
+        //     fn(...args);
+        // }
+
+
+        // let fn = (a, b) => {
+        //     alert(a + b);
+        // }
+        // show(1, 2);
+
+
+        // let [a, b, c] = [1, 2, 3];
+        // console.log(a, b, c);
+
+
+        // let arr = [12, 5, 8];
+
+        // let result = arr.map(item => item * 2)
+        // console.log(result instanceof Array); // 数组
+
+
+        // let arr = [12, 133, 145, 1123];
+    
+        // arr.reduce(function (tmp, item, index) {
+        //    console.log(tmp, item, index);
+        // })
+        // alert(result);
+
+
+        // let arr = [23,12,3,4,5,34,1233];
+
+        // let result = arr.filter(item => item%3 === 0);
+        // alert(result);
+
+
+
+        // let arr = [12,23,123,1123];
+
+        // let result = arr.forEach((item, index) => {
+        //     console.log(index + ': ' + item);
+        // })
+
+
+        // function User (name, pwd) {
+        //     this.name = name;
+        //     this.pwd = pwd;
+        // }
+
+        // User.prototype.showName = function () {
+        //     console.log(this.name);
+        // }
+
+        // User.prototype.showPwd = function () {
+        //     console.log(this.pwd);
+        // }
+
+        // var user = new User('rjd', 123456);
+        // user.showName();
+        // user.showPwd();
+
+
+        // class User {
+        //     constructor(name, pwd) {
+        //         this.name = name;
+        //         this.pwd = pwd;
+        //     }
+        //     showName() {
+        //         console.log(this.name);
+        //     }
+        //     showPwd() {
+        //         console.log(this.pwd);
+        //     }
+        // }
+
+        // let user = new User('rjd', 123456);
+        // user.showName();
+        // user.showPwd();
+
+
+        // function user (name, pwd) {
+        //     this.name = name;
+        //     this.pwd = pwd;
+        // }
+
+        // user.prototype.showName = function () {
+        //     console.log(this.name);
+        // }
+
+        // user.prototype.showPwd = function () {
+        //     console.log(this.pwd);
+        // }
+
+        // function vipUser (name, pwd, lvl) {
+        //      user.call(this, name, pwd);
+
+        //      this.lvl = lvl;
+        // }
+
+        // vipUser.prototype = new user();
+        // vipUser.prototype.constructor = vipUser;
+        // vipUser.prototype.showLvl = function () {
+        //     console.log(this.lvl);
+        // }
+        // console.dir(user);
+        // console.dir(vipUser);
+        // var vuser = new vipUser('rjd', 123456, 3);
+
+        // vuser.showName();
+        // vuser.showPwd();
+        // vuser.showLvl();
+
+
+
+
+        class user {
+            constructor(name, pwd) {
+                this.name = name;
+                this.pwd = pwd;
+            }
+            showName() {
+                console.log(this.name);
+            }
+            showPwd() {
+                console.log(this.pwd);
+            }
+        }
+
+        class vipUser extends user {
+            constructor(name, pwd, lvl) {
+                super(name, pwd);
+
+                this.lvl = lvl;
+            }
+            showLvl() {
+                console.log(this.lvl);
+            }
+        }
+
+        let vuser = new vipUser('rjd', 123456, 3);
+        vuser.showName();
+        vuser.showPwd();
+        vuser.showLvl();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
