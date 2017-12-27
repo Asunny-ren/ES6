@@ -370,5 +370,156 @@
     vuser.showName();
     vuser.showPwd();
     vuser.showLvl();
+```
 
+## JSON
+
+``` js
+    let json = {a: 1, b: 2};
+
+    let str = 'http://www.baidu.com?data=' + encodeURIComponent(JSON.stringify(json));
+
+    // encodeURIComponent()
+    //可把字符串作为URI组件进行编码。其返回值URIstring 的副本，其中的某些字符将被十六进制的转义序列进行替换。
+```
+
+> 简写
+
+``` js
+    let a = 2;
+    let b = 3;
+
+    let json = {a, b, c: 12};
+
+    console.log(json);
+    // {a: 2, b: 3, c: 12}
+
+    // 函数简写
+    let obj = {
+        a,
+        show() {
+            console.log(this.a);
+        }
+    }
+```
+
+## promise
+
+``` js
+    let p = new Promise((resolve, reject) {
+        $.ajax({
+            url: '1.txt',
+            dataType: 'json',
+            success(results) {
+                resolve(results);
+            },
+            error(err) {
+                reject(err);
+            }
+        })
+    })
+
+    p.then((res) => {
+        console.log(res);
+    },(err) => {
+        console.warn(res);
+    })
+
+```
+
+``` js
+// 
+
+    let p1 = new Promise((resolve, reject) {
+        $.ajax({
+            url: '1.txt',
+            dataType: 'json',
+            success(results) {
+                resolve(results);
+            },
+            error(err) {
+                reject(err);
+            }
+        })
+    })
+
+    let p2 = new Promise((resolve, reject) {
+        $.ajax({
+            url: '1.txt',
+            dataType: 'json',
+            success(results) {
+                resolve(results);
+            },
+            error(err) {
+                reject(err);
+            }
+        })
+    })
+
+    Promise.all([p1, p2])
+        .then((res) => {
+            let [res1, res2] = res;
+        }, (err) => {
+            console.log(err);
+        })
+```
+
+
+``` js
+    let createPromise = (url) => {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url,
+                dataType: 'json',
+                success(res) {
+                    resolve(res);
+                },
+                error(err) {
+                    reject(err);
+                }
+            })
+        })
+    }
+
+    Promise.all([
+        createPromise(url1),
+        createPromise(url2)
+    ]).then((res) => {
+        let [res1, res2] = res;
+    }, (err) => {
+        console.log(err);
+    })
+```
+
+``` js
+    // 较新版本的jquery
+    let p = $.ajax({
+        url: 'path',
+        dataType: 'json'
+    })
+
+    console.log(p);
+```
+
+``` js
+    Promise.all([
+        $.ajax({url: 'path', dataType: 'json'}),
+        $.ajax({url: 'path2', dataType: 'json'})
+    ]).then((res) => {
+        let [res1, res2] = res;
+    }, (err) => {
+        console.log(err);
+    })
+```
+
+
+``` js
+    // Promise.race()
+    // 多个负载点，哪个快用哪个
+    Promise.race([
+        $.ajax({url: 'path1', dataType: 'json'}),
+        $.ajax({url: 'path2', dataType: 'json'}),
+        $.ajax({url: 'path3', dataType: 'json'}),
+        $.ajax({url: 'path4', dataType: 'json'})
+    ])
 ```
