@@ -523,3 +523,10 @@
         $.ajax({url: 'path4', dataType: 'json'})
     ])
 ```
+
+
+## generator
+
+``` js
+
+```
