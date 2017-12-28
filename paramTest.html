@@ -138,34 +138,71 @@
 
 
 
-        class user {
-            constructor(name, pwd) {
-                this.name = name;
-                this.pwd = pwd;
-            }
-            showName() {
-                console.log(this.name);
-            }
-            showPwd() {
-                console.log(this.pwd);
-            }
+        // class user {
+        //     constructor(name, pwd) {
+        //         this.name = name;
+        //         this.pwd = pwd;
+        //     }
+        //     showName() {
+        //         console.log(this.name);
+        //     }
+        //     showPwd() {
+        //         console.log(this.pwd);
+        //     }
+        // }
+
+        // class vipUser extends user {
+        //     constructor(name, pwd, lvl) {
+        //         super(name, pwd);
+
+        //         this.lvl = lvl;
+        //     }
+        //     showLvl() {
+        //         console.log(this.lvl);
+        //     }
+        // }
+
+        // let vuser = new vipUser('rjd', 123456, 3);
+        // vuser.showName();
+        // vuser.showPwd();
+        // vuser.showLvl();
+
+
+
+        // function * generatorFn () {
+        //     alert('a');
+
+        //     yield;
+
+        //     alert('b');
+        // }
+
+        // let generatorObj = generatorFn();
+
+        // generatorObj.next();
+        // generatorObj.next();
+
+
+        function * show () {
+            alert('a');
+
+            yield 12;
+
+            alert('b');
+
+            return 55;
         }
 
-        class vipUser extends user {
-            constructor(name, pwd, lvl) {
-                super(name, pwd);
+        let gen = show();
 
-                this.lvl = lvl;
-            }
-            showLvl() {
-                console.log(this.lvl);
-            }
-        }
+        let re1 = gen.next();
 
-        let vuser = new vipUser('rjd', 123456, 3);
-        vuser.showName();
-        vuser.showPwd();
-        vuser.showLvl();
+        console.log(re1); // {value: 12, done: false}
+
+        let re2 = gen.next();
+
+        console.log(re2); // {value: 55, done: true}
+        
     </script>
 </head>
 <body>

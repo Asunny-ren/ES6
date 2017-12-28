@@ -528,5 +528,136 @@
 ## generator
 
 ``` js
+    function * generatorFn () {
+        alert('a');
 
+        yield;
+
+        alert('b');
+    }
+
+    // 返回一个generator对象
+    let generatorObj = generatorFn();
+
+    generatorObj.next();
+    generatorObj.next();
 ```
+
+``` js
+    // yield 传参
+    function * show (num) {
+        alert('a');
+
+        alert(num);
+
+        let a = yield;
+
+        alert('b');
+
+        alert(a); // 5
+    }
+
+    let gen = show(99); 
+
+    gen.next(12); // 第一个next传参没什么作用
+    gen.next(5);
+```
+
+``` js
+    // yield 返回
+    function * show () {
+        alert('a');
+
+        yield 12;
+
+        alert('b');
+    }
+
+    let gen = show();
+
+    let re1 = gen.next();
+
+    console.log(re1); // {value: 12, done: false}
+
+    let re2 = gen.next();
+
+    console.log(re2); // {value: undefined, done: true}
+```
+
+``` js
+    // yield 返回
+    function * show () {
+        alert('a');
+
+        yield 12;
+
+        alert('b');
+
+        return 55;
+    }
+
+    let gen = show();
+
+    let re1 = gen.next();
+
+    console.log(re1); // {value: 12, done: false}
+
+    let re2 = gen.next();
+
+    console.log(re2); // {value: 55, done: true}
+```
+
+
+> generator异步操作回调
+
+``` js
+    function runner(_gen) {
+        return new Promise((resolve, reject) => {
+            var gen = _gen();
+
+            _next();
+
+            function _next(_last_res) {
+                var res = gen.next(_last_res);
+
+                if (!res.done) {
+                    var obj = res.value;
+
+                    if (obj instanceof Promise) {
+                        obj.then((res) => {
+                            _next(res);
+                        }, (err) => {
+                            reject(err);
+                        });
+                    } else if (typeof obj == 'function') {
+                        if (obj.constructor.toString().startsWith('function GeneratorFunction()')) {
+                            runner(obj).then(res => _next(res), reject);
+                        } else {
+                            _next(obj());
+                        }
+                    } else {
+                        _next(obj);
+                    }
+                } else {
+                    resolve(res.value);
+                }
+            }
+        });
+    };
+
+    // 带逻辑的generator
+    runner(function * () {
+        let userData = yield $.ajax({url: 'path', dataType: 'json'});
+
+        if(userData.type == 'vip') {
+            let items = yield $.ajax({url: 'path2', dataType: 'json'});
+        }else {
+            let items3 = yield $.ajax({url: 'path3', dataType: 'json'});
+        }
+
+        // 生成、、、
+    })
+```
+**promise适合一次读取一堆**
+
+**generator适合逻辑性的**
