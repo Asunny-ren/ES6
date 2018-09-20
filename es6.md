@@ -5,7 +5,7 @@
     IE 10+、 chrome 、Firefox 、移动端、 nodejs
 
 ==mark==
-    
+
     1. 变量
     2. 函数
     3. 数组
@@ -14,21 +14,19 @@
     6. promise
     7. generator
     8. 模块化
-    
 
 ## 变量
 
 ``` hash
-    var 
+    var
     可以重复声明
     无法限制修改
     没有块级作用域
 
-    let 
+    let
     不能重复声明
     变量-可以修改
     块级作用域
-
 
     const
     不能重复声明
@@ -54,7 +52,6 @@
 
 如果只有一个参数, ()可以省略
 如果只有一个return, {}可以省略
-
 
 ## 参数
 
@@ -170,7 +167,6 @@
     console.log(obj, arr ,num str) // {a1: 2, b1: 3} [4, 5, 6] 99 'abc'
 ```
 
-
 ## 数组
 
 > map
@@ -197,14 +193,13 @@
 
 ``` js
     let arr = [12, 133, 145, 1123];
-    
+
     // tmp 是一个中间值， item当前值， index下标, 返回最终值
     let result = arr.reduce(function (tmp, item, index) {
         return tmp + item;
     })
     alert(result);
 ```
-
 
 > filter
 
@@ -224,7 +219,6 @@
         console.log(index + ': ' + item);
     })
 ```
-
 
 ## 字符串
 
@@ -264,7 +258,6 @@
                 <p>${content}</p>
                 </div>`;
 ```
-
 
 ## 面向对象
 
@@ -428,8 +421,6 @@
 ```
 
 ``` js
-// 
-
     let p1 = new Promise((resolve, reject) {
         $.ajax({
             url: '1.txt',
@@ -463,7 +454,6 @@
             console.log(err);
         })
 ```
-
 
 ``` js
     let createPromise = (url) => {
@@ -512,7 +502,6 @@
     })
 ```
 
-
 ``` js
     // Promise.race()
     // 多个负载点，哪个快用哪个
@@ -523,7 +512,6 @@
         $.ajax({url: 'path4', dataType: 'json'})
     ])
 ```
-
 
 ## generator
 
@@ -606,7 +594,6 @@
 
     console.log(re2); // {value: 55, done: true}
 ```
-
 
 > generator异步操作回调
 
