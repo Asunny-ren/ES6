@@ -222,21 +222,29 @@
 
 ## 字符串
 
-> startsWith
+> startsWith 是否是以输入字符开头
 
 ``` js
     let str = 'https://www.baidu.com';
 
-    str.startsWith('a'); // true
+    str.startsWith('https'); // true
 ```
 
-> endsWith
+> endsWith 是否以输入字符结束
 
 ``` js
     let str = '';
 
-    str.startsWith('a'); // true
+    str.endWith('a'); // false
 ```
+
+> includes 是否包含输入字符
+``` js
+let str = 'https://www.baidu.com'
+
+str.includes(https);    // true
+```
+
 
 > 字符串模版
 
@@ -649,3 +657,46 @@
 **promise适合一次读取一堆**
 
 **generator适合逻辑性的**
+
+## 模块化
+
+> export default
+
+``` js
+// a.js
+...
+
+exprot default a;
+
+```
+
+``` js
+// b.js
+import a from './a.js';
+
+...
+```
+
+> export
+
+
+``` js
+// a.js
+const obj = 'obj';
+
+const obj2 = 'obj2';
+
+const obj3 = () => {
+    ...
+}
+
+export {obj, obj2, obj3};
+```
+
+``` js
+// b.js
+import * as a from './a.js';
+// 按需引入 import {obj, obj2, obj3} from './a.js';
+
+...
+```
